@@ -9,6 +9,7 @@ export default function Navbar() {
         <li><Link href="/about">About</Link></li>
         <li><Link href="/portfolio">Portfolio</Link></li>
         <li><Link href="/server-Data">Server Data</Link></li>
+        <li><Link href="/bscf">Basic Server Component Fetch</Link></li>
       </ul>
     </div>
   )
