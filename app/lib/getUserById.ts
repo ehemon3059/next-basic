@@ -1,4 +1,4 @@
-// This runs on the server
+// lib/getUserById.ts
 
 export type User = {
   id: number;
@@ -24,17 +24,15 @@ export type User = {
   };
 };
 
-export async function getUsers(): Promise<User[]> {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users', {
-    // Next.js extends fetch() with caching options
-    next: { revalidate: 60 } // Cache for 60 seconds
-
-   
+export async function getUserById(id: string): Promise<User> {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+    // You can use 'no-store' for fresh data or 'revalidate' for caching
+ next: { revalidate: 60 } // Cache for 60 seconds
   });
-  
+
   if (!res.ok) {
-    throw new Error('Failed to fetch users');
+    throw new Error('Failed to fetch user');
   }
-  
+
   return res.json();
 }
